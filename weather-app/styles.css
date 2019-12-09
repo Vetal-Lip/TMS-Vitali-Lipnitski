@@ -60,3 +60,13 @@ input.input {
 input:focus {
     outline: none;
 }
+
+
+/* styles for map */
+#map {
+     height: 400px;
+     width:100%;
+}
+
+
+
