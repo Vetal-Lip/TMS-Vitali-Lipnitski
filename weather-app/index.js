@@ -27,7 +27,7 @@ function renderTbody() {
 
 buttonFind.addEventListener('click', function(){
     console.log(input.value);
-    fetch(`http://api.weatherstack.com/current?access_key=c3f9ea88c1f45ba3d7f06dbe3ac4fa49&query= ${input.value}`)
+    fetch(`http://api.weatherstack.com/current?access_key=c3f9ea88c1f45ba3d7f06dbe3ac4fa49&query= ${input.value}&units=f`)
     .then(result => result.json())
     .then(data => {
         const {
