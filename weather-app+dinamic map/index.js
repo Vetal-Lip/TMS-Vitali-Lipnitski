@@ -6,6 +6,7 @@ form.onsubmit = function(event){
 const input = document.getElementById('input');
 const buttonFind = document.getElementById('button');
 const tbody = document.querySelector('#tbody');
+const buttonMyWeather = document.querySelector('#buttonMyWeather');
 let mapId = document.getElementById('map');
 const storage = new Map();
 const mapMarkers = [];
@@ -38,6 +39,29 @@ function renderTbody() {
     })
 }
 
+buttonMyWeather.addEventListener('click', function(){
+    
+        navigator.geolocation.getCurrentPosition(function(position) {
+            const latMyWeather = position.coords.latitude;
+            const lonMyWeather = position.coords.longitude;
+            console.log(latMyWeather, lonMyWeather);
+            fetch(`http://api.weatherstack.com/current?access_key=c3f9ea88c1f45ba3d7f06dbe3ac4fa49&query= ${latMyWeather}, ${lonMyWeather}`)    
+                .then(result => result.json())
+                .then(data => {
+                const {
+                    location: {name, country},
+                    current: {temperature}
+                } = data
+                storage.set(name, [name, country, temperature]);
+                renderTbody();
+                marker = L.marker([latMyWeather, lonMyWeather]).addTo(map);
+                marker.bindPopup(`My location: ${name}
+                My temperature: ${temperature}`).openPopup();
+                mapMarkers.push(marker);
+                })
+            })
+})
+
 buttonFind.addEventListener('click', function(){
     console.log(input.value);
     fetch(`http://api.weatherstack.com/current?access_key=c3f9ea88c1f45ba3d7f06dbe3ac4fa49&query= ${input.value}`)
@@ -61,11 +85,9 @@ buttonFind.addEventListener('click', function(){
 
 let buttonClear = document.getElementById('clear');
 buttonClear.addEventListener('click', function(event){
-    
     storage.clear();
     tbody.innerHTML = ' ';
     mapMarkers.forEach(function(item){
         map.removeLayer(item);
     })
-
-})
+}) 
