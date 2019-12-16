@@ -10,6 +10,7 @@ const buttonMyWeather = document.querySelector('#buttonMyWeather');
 let mapId = document.getElementById('map');
 const storage = new Map();
 const mapMarkers = [];
+const arr = [];
 let map;
 let marker;
 
@@ -64,24 +65,47 @@ buttonMyWeather.addEventListener('click', function(){
 
 buttonFind.addEventListener('click', function(){
     console.log(input.value);
-    fetch(`http://api.weatherstack.com/current?access_key=c3f9ea88c1f45ba3d7f06dbe3ac4fa49&query= ${input.value}`)
-    .then(result => result.json())
-    .then(data => {
-        console.log(data);
-        const {
-            location: {name, country, lat, lon},
-            current: {temperature}
-        } = data
-        console.log(data)
-        storage.set(name, [name, country, temperature]);
-        renderTbody();
-
-        marker = L.marker([lat, lon]).addTo(map);
-        marker.bindPopup(`${[lat, lon]}`).openPopup();
-        mapMarkers.push(marker);
-        console.log(mapMarkers)
-    })
+    if (localStorage){ 
+        let keys = Object.keys(localStorage);
+        console.log(keys)
+        for (let key in keys){
+            console.log(keys[key])
+            fetch(`http://api.weatherstack.com/current?access_key=c3f9ea88c1f45ba3d7f06dbe3ac4fa49&query= ${keys[key]}`)
+            .then(result => result.json())
+            .then(data => {
+                const {
+                    location: {name, country, lat, lon},
+                    current: {temperature}
+                } = data
+                storage.set(name, [name, country, temperature]);
+                renderTbody();
+                marker = L.marker([lat, lon]).addTo(map);
+                marker.bindPopup(`${[lat, lon]}`).openPopup();
+                mapMarkers.push(marker);
+            })
+        }
+        
+    } 
+    if (!!localStorage){
+        fetch(`http://api.weatherstack.com/current?access_key=c3f9ea88c1f45ba3d7f06dbe3ac4fa49&query= ${input.value}`)
+            .then(result => result.json())
+            .then(data => {
+                const {
+                    location: {name, country, lat, lon},
+                    current: {temperature}
+                } = data
+                storage.set(name, [name, country, temperature]);
+                renderTbody();
+                arr.push(name);
+                console.log(arr)
+                localStorage.setItem(`${name}`, [arr])
+                marker = L.marker([lat, lon]).addTo(map);
+                marker.bindPopup(`${[lat, lon]}`).openPopup();
+                mapMarkers.push(marker);
+            })
+    }
 })
+
 
 let buttonClear = document.getElementById('clear');
 buttonClear.addEventListener('click', function(event){
