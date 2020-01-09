@@ -1,0 +1,52 @@
+.container {
+  width: 300px;
+  height: 300px;
+  border: 1px solid grey;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.center {
+   justify-content: center;
+   align-items: center;
+}
+  
+.counter {
+  display: flex;
+  flex: 1; 
+  background-color: grey;
+  font-size: 50px;
+}
+
+.buttons_panel {
+  display: flex;
+  flex-direction: row;
+}
+
+.button {
+  display: flex;
+  width: 100px;
+  height: 100px; 
+  font-size: 45px; 
+}
+
+.decrement {
+  background-color: red;
+  color: white;
+  cursor: pointer;
+
+}
+
+.reset {
+  background-color: orange; 
+  font-size: 20px;
+  text-transform: uppercase;   
+  cursor: pointer;
+}
+
+.increment {
+  background-color: green;   
+  color: white;  
+  cursor: pointer;
+}
