@@ -1,0 +1,24 @@
+.nav{
+    text-transform: capitalize;
+    padding: 20px 20px;
+    display: flex;
+    
+}
+
+.nav_item{
+    padding-left: 20px;    
+    color: green;
+    text-decoration: none;
+}
+
+.nav_item:link{
+    text-decoration: none;
+}
+
+.nav_item:visited{
+    text-decoration: none;
+}
+.nav_item:active{
+    text-decoration: none;
+}
+

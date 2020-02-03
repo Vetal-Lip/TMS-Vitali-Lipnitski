@@ -1,0 +1,27 @@
+.buttonDelete{
+    background-color: rgb(211, 9, 9);
+    border-radius: 20px;
+}
+
+.buttonComplete{
+    background-color: rgb(224, 228, 22);
+    border-radius: 20px;
+}
+
+.completedStyle{
+    background-color: rgb(171, 255, 160);
+}
+
+.task_wrapper{
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 500px;
+    height: 30px;
+    margin-top: 20px;
+}
+
+.button_wrapper{
+    margin-left: 190px;
+    margin-top: 10px;
+}
