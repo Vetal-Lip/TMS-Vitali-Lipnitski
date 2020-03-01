@@ -23,8 +23,8 @@ export const moviesMiddleware = store => next => action => {
     if (action.type === ITEMS_IS_LOADING) {
 
         fetch(`https://reactjs-cdp.herokuapp.com/movies`)
-            .then((response) => response.json())
-            .then((data) => {
+            .then(response => response.json())
+            .then(data => {
                 const action = itemsFetchDataSuccess(data);
                 
                 store.dispatch(action)
