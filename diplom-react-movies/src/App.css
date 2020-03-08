@@ -1,0 +1,60 @@
+.container{
+    max-width: 1280px;
+    background-color: grey;
+    margin: 0;
+    padding: 0;
+}
+
+.container-bg{
+    background-image: url("http://wallpapers-images.ru/1280x1024/movies/wallpapers/wallpapers-movies-19.jpg");   
+    background-repeat: no-repeat;
+   
+}
+
+.container-wrapper,
+.topbar-wrapper{
+    margin: 0 auto;
+    max-width: 80%;
+    
+}
+.form-title{
+    padding-top: 80px;
+
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+.card-wrapper{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    min-height: 500px;
+    
+    background-color: white;
+}
+
+.topbar-background{
+    background-color: rgb(189, 185, 185);
+}
+.topbar-wrapper{
+   padding-top: 20px;
+   padding-bottom: 20px;
+}
+
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: rgb(189, 185, 185);
+    width: 100%;
+}
+
+.footer_content{
+    display: block;
+    margin: 0 auto;
+    max-width: 80%;
+    font-style: italic;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
