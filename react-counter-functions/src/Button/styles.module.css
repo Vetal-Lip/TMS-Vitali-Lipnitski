@@ -1,0 +1,13 @@
+.center {
+    justify-content: center;
+    align-items: center;
+ }
+
+.button {
+    display: flex;
+    width: 100px;
+    height: 100px; 
+    font-size: 45px; 
+  }
+  
+  
